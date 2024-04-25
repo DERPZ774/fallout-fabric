@@ -1,0 +1,12 @@
+{
+  "item.nuka-isles.bottle_cap": "Bottle Cap",
+  "item.nuka-isles.scrap_metal": "Scrap Metal",
+  "item.nuka-isles.ten_mm_pistol": "10mm Pistol",
+  "item.nuka-isles.lightbulb": "Lightbulb",
+  "block.nuka-isles.lamp": "Lamp",
+  "block.nuka-isles.scrap_metal_block": "Scrap Metal Block",
+  "itemgroup.nuka-isles": "Nuka Isles",
+  "sounds.nuka-isles.lamp_use": "Click",
+  "key.category.nuka-isles": "Nuka Isles",
+  "key.nuka-isles.shoot": "Shooting"
+}

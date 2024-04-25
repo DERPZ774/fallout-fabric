@@ -1,0 +1,15 @@
+{
+  "lamp_use": {
+    "subtitle": "sounds.nuka-isles.lamp_use",
+    "sounds": [
+      "nuka-isles:lamp_use"
+    ]
+  },
+
+  "ten_mm_shoot": {
+    "subtitle": "sounds.nuka-isles.ten_mm_shoot",
+    "sounds": [
+      "nuka-isles:ten_mm_shoot"
+    ]
+  }
+}

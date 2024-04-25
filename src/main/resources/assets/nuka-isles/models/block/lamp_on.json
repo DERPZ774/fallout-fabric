@@ -1,0 +1,6 @@
+{
+  "parent": "nuka-isles:block/lamp_off",
+  "textures": {
+    "1": "nuka-isles:block/lamp_light_on"
+  }
+}
