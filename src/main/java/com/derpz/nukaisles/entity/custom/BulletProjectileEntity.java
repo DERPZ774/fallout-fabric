@@ -1,44 +1,30 @@
 package com.derpz.nukaisles.entity.custom;
 
 import com.derpz.nukaisles.entity.ModEntities;
+import com.derpz.nukaisles.item.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class BulletProjectileEntity extends ProjectileEntity {
+public class BulletProjectileEntity extends PersistentProjectileEntity {
     private float damage;
-    private Vec3d vel;
-    private int maxLife;
-    private int lifeTicks;
 
     public BulletProjectileEntity(EntityType<BulletProjectileEntity> type, World world) {
-        super(ModEntities.BULLET_PROJECTILE, world);
+        super(type, world, ModItems.SCRAP_METAL.getDefaultStack());
     }
 
-    public BulletProjectileEntity(LivingEntity owner, World world, float bulletDamage) {
-        super(ModEntities.BULLET_PROJECTILE, world);
+    public BulletProjectileEntity(LivingEntity owner, World world, float bulletDamage, Vec3d vel) {
+        super(ModEntities.BULLET_PROJECTILE, world, ModItems.SCRAP_METAL.getDefaultStack());
+        this.setOwner(owner);
+        this.setPosition(owner.getX(), owner.getEyeY() - 0.10000000149011612, owner.getZ());
         this.damage = bulletDamage;
-       // this.setNoGravity(true);
+        this.setVelocity(vel);
+        this.setNoGravity(true);
     }
-
-    @Override
-    protected void initDataTracker() {
-
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-    }
-
-//    @Override
-//    public boolean hasNoGravity() {
-//        return !this.isTouchingWater();
-//    }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
@@ -46,18 +32,15 @@ public class BulletProjectileEntity extends ProjectileEntity {
         {
             entity.damage(getDamageSources().thrown(this, this.getOwner() != null ? this.getOwner():this), this.damage);
             entity.timeUntilRegen = 0;
-            System.out.println("Hit entity");
         }
         this.discard();
     }
 
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
-        System.out.println("Hit block");
+        if (!this.getWorld().isClient()) {
+            this.getWorld().sendEntityStatus( this, (byte) 3);
+        }
         this.discard();
-    }
-
-    public void setBaseVel(Vec3d vel) {
-        this.vel = vel;
     }
 }

@@ -1,6 +1,7 @@
 package com.derpz.nukaisles;
 
 import com.derpz.nukaisles.block.ModBlocks;
+import com.derpz.nukaisles.entity.ModEntities;
 import com.derpz.nukaisles.item.ModItemGroups;
 import com.derpz.nukaisles.item.ModItems;
 import com.derpz.nukaisles.networking.ModMessages;
@@ -22,5 +23,6 @@ public class NukaIsles implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModSounds.registerSounds();
 		ModMessages.registerC2SPackets();
+		ModEntities.registerEntities();
 	}
 }

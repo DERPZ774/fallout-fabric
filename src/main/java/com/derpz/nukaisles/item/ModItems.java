@@ -1,7 +1,8 @@
 package com.derpz.nukaisles.item;
 
 import com.derpz.nukaisles.NukaIsles;
-import com.derpz.nukaisles.item.custom.TenMmPistolItem;
+import com.derpz.nukaisles.item.custom.GunItem;
+import com.derpz.nukaisles.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -13,10 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModItems {
+    //Regular Items
     public static final Item BOTTLE_CAP = registerItem("bottle_cap", new Item(new FabricItemSettings()));
     public static final Item LIGHTBULB = registerItem("lightbulb", new Item(new FabricItemSettings()));
-    public static final Item TEN_MM_PISTOL = registerItem("ten_mm_pistol", new TenMmPistolItem(new FabricItemSettings()));
     public static final Item SCRAP_METAL = registerItem("scrap_metal", new Item(new FabricItemSettings()));
+
+    //Guns
+    public static final Item TEN_MM_PISTOL = registerItem("ten_mm_pistol", new GunItem(new FabricItemSettings(),
+            ModSounds.TEN_MM_SHOOT,5, 1));
+
+    public static final Item THIRST_ZAPPER = registerItem("thirst_zapper", new GunItem(new FabricItemSettings(),
+            ModSounds.TEN_MM_SHOOT,10, 5));
+
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
 //        entries.add(BOTTLE_CAP);
