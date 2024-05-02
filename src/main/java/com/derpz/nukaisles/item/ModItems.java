@@ -21,10 +21,10 @@ public class ModItems {
 
     //Guns
     public static final Item TEN_MM_PISTOL = registerItem("ten_mm_pistol", new GunItem(new FabricItemSettings(),
-            ModSounds.TEN_MM_SHOOT,5, 1));
+            ModSounds.TEN_MM_SHOOT,5, 1, 12));
 
     public static final Item THIRST_ZAPPER = registerItem("thirst_zapper", new GunItem(new FabricItemSettings(),
-            ModSounds.TEN_MM_SHOOT,10, 5));
+            ModSounds.TEN_MM_SHOOT,10, 5,  12));
 
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
