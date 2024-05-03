@@ -17,6 +17,5 @@ public class NukaIslesClient implements ClientModInitializer {
         KeyInputHandler.register();
         ModMessages.registerS2CPackets();
         EntityRendererRegistry.register(ModEntities.BULLET_PROJECTILE, EmptyEntityRenderer::new);
-        //EntityRendererRegistry.register(ModEntities.BULLET_PROJECTILE, EmptyEntityRenderer::new);
     }
 }

@@ -22,7 +22,7 @@ public class KeyInputHandler {
     public static final String KEY_SHOOT = "key.nuka-isles.shoot";
 
     public static KeyBinding shootingKey;
-    private static final GunUtil gunUtil = new GunUtil(); // Create an instance of GunUtil
+    private static final GunUtil gunUtil = new GunUtil();
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -35,7 +35,7 @@ public class KeyInputHandler {
                         ClientPlayNetworking.send(ModMessages.SHOOTING_ID, PacketByteBufs.create());
                         client.player.playSound(sound, SoundCategory.PLAYERS, 0.4f, 1f);
                         float recoil = ((GunItem) heldItem.getItem()).getRecoil();
-                        gunUtil.applyRecoil(recoil, 4.0f); // Adjust recoil amount and duration as needed
+                        gunUtil.applyRecoil(recoil, 4.0f);
                         gunItem.fireGun(client.world, client.player, heldItem);
                     }
                 }
