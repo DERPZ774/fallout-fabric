@@ -1,11 +1,13 @@
 package com.derpz.nukaisles.item.custom;
 
+import com.derpz.nukaisles.sound.ModSounds;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -15,16 +17,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class GunItem extends Item {
-    private final SoundEvent sound;
+    private final SoundEvent shootSound, drySound;
     private final float damage;
     private final float recoil;
     private final int maxAmmo;
 //    private static double range;
 //    private final int fireRate;
 
-    public GunItem(Settings settings, SoundEvent sound, float damage, float recoil, int maxAmmo) {
+    public GunItem(Settings settings, SoundEvent shootSound, SoundEvent drySound, float damage, float recoil, int maxAmmo) {
         super(settings);
-        this.sound = sound;
+        this.shootSound = shootSound;
+        this.drySound = drySound;
         this.damage = damage;
         this.recoil = recoil;
         this.maxAmmo = maxAmmo;
@@ -38,28 +41,29 @@ public class GunItem extends Item {
         return recoil;
     }
 
-    public SoundEvent getSound() {
-        return sound;
+    public SoundEvent getShootSound() {
+        return shootSound;
     }
 
-    public int getMaxAmmo() {
-        return maxAmmo;
+    public SoundEvent getDrySound() {
+        return drySound;
     }
 
-    public static ItemStack getDefaultGunStack(GunItem gunItem, int defaultAmmo, int maxAmmo) {
-        ItemStack stack = new ItemStack(gunItem);
-        NbtCompound nbt = stack.getOrCreateNbt();
-        nbt.putInt("currentAmmo", defaultAmmo);
-        nbt.putInt("maxAmmo", maxAmmo);
-        return stack;
+    public int getMaxAmmo(ItemStack stack) {
+        return stack.getOrCreateNbt().getInt("maxAmmo");
     }
+
+    public int getCurrentAmmo(ItemStack stack) {
+        return stack.getOrCreateNbt().getInt("currentAmmo");
+    }
+
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 //        if (Screen.hasShiftDown()) {
 //            //blah blah add shift details for gun
 //        } else {
 //            //add current ammo and max ammo display
-        tooltip.add(Text.translatable("Ammo: " + (stack.getOrCreateNbt().getInt("currentAmmo")) + "/" + this.maxAmmo).formatted(Formatting.WHITE));
+            tooltip.add(Text.translatable("Ammo: " + getCurrentAmmo(stack) + "/" + getMaxAmmo(stack)).formatted(Formatting.WHITE));
 //
 //        }
         super.appendTooltip(stack, world, tooltip, context);
@@ -79,6 +83,7 @@ public class GunItem extends Item {
 
     private void setDefaultNBT(ItemStack stack) {
         NbtCompound nbt = stack.getOrCreateNbt();
+        //Change current ammo to 0 when reloading is implemented
         nbt.putInt("currentAmmo", this.maxAmmo);
         nbt.putInt("maxAmmo", this.maxAmmo);
     }
@@ -87,9 +92,6 @@ public class GunItem extends Item {
         NbtCompound nbt = stack.getOrCreateNbt();
         int currentAmmo = nbt.getInt("currentAmmo");
         if (currentAmmo > 0) {
-            // Perform shooting action here
-            // For example, play sound, spawn bullet entity, etc.
-            // Decrement current ammo count
             nbt.putInt("currentAmmo", --currentAmmo);
         } else {
             return;

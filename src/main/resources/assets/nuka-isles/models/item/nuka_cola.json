@@ -1,0 +1,14 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "nuka-isles:item/bottle_full"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"nukaisles:cap": 1.0
+			},
+			"model": "nuka-isles:item/bottle_full_uncapped"
+		}
+	]
+}

@@ -30,13 +30,16 @@ public class KeyInputHandler {
                 assert client.player != null;
                 ItemStack heldItem = client.player.getMainHandStack();
                 if (heldItem.getItem() instanceof GunItem gunItem) {
-                    SoundEvent sound = ((GunItem) heldItem.getItem()).getSound();
+                    SoundEvent shootSound = ((GunItem) heldItem.getItem()).getShootSound();
+                    SoundEvent drySound = ((GunItem) heldItem.getItem()).getDrySound();
                     if (gunItem.hasAmmo(heldItem)) {
                         ClientPlayNetworking.send(ModMessages.SHOOTING_ID, PacketByteBufs.create());
-                        client.player.playSound(sound, SoundCategory.PLAYERS, 0.4f, 1f);
+                        client.player.playSound(shootSound, SoundCategory.PLAYERS, 0.4f, 1f);
                         float recoil = ((GunItem) heldItem.getItem()).getRecoil();
                         gunUtil.applyRecoil(recoil, 4.0f);
                         gunItem.fireGun(client.world, client.player, heldItem);
+                    } else {
+                        client.player.playSound(drySound, SoundCategory.PLAYERS, 1, 1);
                     }
                 }
             }

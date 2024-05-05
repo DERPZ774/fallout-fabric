@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "nuka-isles:item/nuka_cola_quantum_bottle"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "nukaisles:cap": 1
+      },
+      "model": "nuka-isles:item/quantum_bottle_full_uncapped"
+    }
+  ]
+}

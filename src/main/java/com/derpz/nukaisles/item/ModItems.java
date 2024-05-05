@@ -2,6 +2,7 @@ package com.derpz.nukaisles.item;
 
 import com.derpz.nukaisles.NukaIsles;
 import com.derpz.nukaisles.item.custom.GunItem;
+import com.derpz.nukaisles.item.custom.NukaColaItem;
 import com.derpz.nukaisles.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
@@ -21,10 +22,13 @@ public class ModItems {
 
     //Guns
     public static final Item TEN_MM_PISTOL = registerItem("ten_mm_pistol", new GunItem(new FabricItemSettings(),
-            ModSounds.TEN_MM_SHOOT,5, 1, 12));
+            ModSounds.TEN_MM_SHOOT, ModSounds.TEN_MM_DRY, 5, 1, 12));
 
     public static final Item THIRST_ZAPPER = registerItem("thirst_zapper", new GunItem(new FabricItemSettings(),
-            ModSounds.TEN_MM_SHOOT,10, 5,  12));
+            ModSounds.TEN_MM_SHOOT, ModSounds.TEN_MM_DRY,10, 5,  12));
+
+    //Nuka Cola
+    public static final Item NUKA_COLA = registerItem("nuka_cola", new NukaColaItem(new FabricItemSettings()));
 
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {

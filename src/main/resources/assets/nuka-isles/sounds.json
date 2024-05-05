@@ -11,5 +11,11 @@
     "sounds": [
       "nuka-isles:ten_mm_shoot"
     ]
+  },
+  "ten_mm_dry": {
+    "subtitle": "sounds.nuka-isles.ten_mm_dry",
+    "sounds": [
+      "nuka-isles:ten_mm_dry"
+    ]
   }
 }

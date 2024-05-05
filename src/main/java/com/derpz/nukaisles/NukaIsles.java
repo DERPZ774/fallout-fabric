@@ -1,10 +1,12 @@
 package com.derpz.nukaisles;
 
 import com.derpz.nukaisles.block.ModBlocks;
+import com.derpz.nukaisles.block.entity.ModBlockEntities;
 import com.derpz.nukaisles.entity.ModEntities;
 import com.derpz.nukaisles.item.ModItemGroups;
 import com.derpz.nukaisles.item.ModItems;
 import com.derpz.nukaisles.networking.ModMessages;
+import com.derpz.nukaisles.screen.ModScreenHandlers;
 import com.derpz.nukaisles.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
 
@@ -22,6 +24,8 @@ public class NukaIsles implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModSounds.registerSounds();
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 		ModMessages.registerC2SPackets();
 		ModEntities.registerEntities();
 	}

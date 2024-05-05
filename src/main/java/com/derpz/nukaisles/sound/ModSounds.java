@@ -11,6 +11,7 @@ public class ModSounds {
 
     public static final SoundEvent LAMP_CLICK = registerSoundEvent("lamp_use");
     public static final SoundEvent TEN_MM_SHOOT = registerSoundEvent("ten_mm_shoot");
+    public static final SoundEvent TEN_MM_DRY = registerSoundEvent("ten_mm_dry");
 
 //    public static final BlockSoundGroup EXAMPLE_BLOCK_SOUNDS = new BlockSoundGroup(1f, 1f,
 //            ModSounds.LAMP_CLICK, ModSounds.LAMP_CLICK, ModSounds.LAMP_CLICK, ModSounds.LAMP_CLICK, ModSounds.LAMP_CLICK);
