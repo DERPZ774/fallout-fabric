@@ -26,6 +26,7 @@ public class NukaColaItem extends Item {
                 if (!playerEntity.getAbilities().creativeMode) {
                     stack.decrement(1);
                     playerEntity.giveItemStack(new ItemStack(ModItems.BOTTLE_CAP.asItem()));
+                    playerEntity.giveItemStack(new ItemStack(ModItems.EMPTY_NUKA_COLA.asItem()));
                 }
             }
             world.emitGameEvent(playerEntity, GameEvent.DRINK, playerEntity.getEyePos());
@@ -35,14 +36,6 @@ public class NukaColaItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-
-//        if (pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) && !pContext.getItemInHand().hasTag()) {
-//            pContext.getLevel().playSound(pContext.getPlayer(), pContext.getClickedPos(), ModSounds.COLA_DECAP.get(), SoundSource.BLOCKS, 4.0f, 1.0f);
-//            if (!pContext.getLevel().isClientSide) {
-//                pContext.getItemInHand().getOrCreateTag().putInt("cap", 1);
-//                Objects.requireNonNull(pContext.getPlayer()).getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
-//            }
-//        }
         return ItemUsage.consumeHeldItem(world, user, hand);
     }
     @Override
@@ -56,5 +49,10 @@ public class NukaColaItem extends Item {
     @Override
     public SoundEvent getDrinkSound() {
         return super.getDrinkSound();
+    }
+
+    @Override
+    public boolean hasGlint(ItemStack stack) {
+        return stack.getItem() == ModItems.ICE_COLD_NUKA_COLA;
     }
 }

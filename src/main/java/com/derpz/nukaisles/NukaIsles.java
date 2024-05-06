@@ -9,7 +9,6 @@ import com.derpz.nukaisles.networking.ModMessages;
 import com.derpz.nukaisles.screen.ModScreenHandlers;
 import com.derpz.nukaisles.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

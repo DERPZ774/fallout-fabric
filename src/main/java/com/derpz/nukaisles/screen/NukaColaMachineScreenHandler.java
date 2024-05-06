@@ -19,14 +19,14 @@ public class NukaColaMachineScreenHandler extends ScreenHandler {
 
     public NukaColaMachineScreenHandler(int syncID, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncID, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
-                new ArrayPropertyDelegate(2));
+                new ArrayPropertyDelegate(5));
 
     }
 
     public NukaColaMachineScreenHandler(int syncId, PlayerInventory playerInventory,
                                            BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.NUKA_COLA_MACHINE_SCREEN_HANDLER, syncId);
-        checkSize((Inventory) blockEntity, 2);
+        checkSize((Inventory) blockEntity, 7);
         this.inventory = (Inventory) blockEntity;
         playerInventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
@@ -46,12 +46,12 @@ public class NukaColaMachineScreenHandler extends ScreenHandler {
     }
 
     public boolean isCrafting() {
-        return propertyDelegate.get(0) > 0;
+        return propertyDelegate.get(2) > 0;
     }
     public int getScaledProgress() {
-        int progress = this.propertyDelegate.get(0);
-        int maxProgress = this.propertyDelegate.get(1);
-        int fuelSize = 24;
+        int progress = this.propertyDelegate.get(2);
+        int maxProgress = this.propertyDelegate.get(3);
+        int fuelSize = 54;
 
         return maxProgress != 0 && progress != 0 ? progress * fuelSize / maxProgress : 0;
     }

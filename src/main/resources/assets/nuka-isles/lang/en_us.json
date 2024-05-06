@@ -2,11 +2,17 @@
   "item.nuka-isles.bottle_cap": "Bottle Cap",
   "item.nuka-isles.scrap_metal": "Scrap Metal",
   "item.nuka-isles.ten_mm_pistol": "10mm Pistol",
+  "item.nuka-isles.thirst_zapper": "Thirst Zapper",
+  "item.nuka-isles.nuka_cola": "Nuka-Cola",
   "item.nuka-isles.lightbulb": "Lightbulb",
+  "item.nuka-isles.empty_nuka_cola": "Empty Nuka Cola Bottle",
+  "item.nuka-isles.ice_cold_nuka_cola": "Ice Cold Nuka-Cola",
   "block.nuka-isles.lamp": "Lamp",
   "block.nuka-isles.scrap_metal_block": "Scrap Metal Block",
+  "block.nuka-isles.nuka_cola_machine": "Nuka-Cola Machine",
   "itemgroup.nuka-isles": "Nuka Isles",
   "sounds.nuka-isles.lamp_use": "Click",
   "key.category.nuka-isles": "Nuka Isles",
-  "key.nuka-isles.shoot": "Shooting"
+  "key.nuka-isles.shoot": "Shooting",
+  "block.entity.nuka-isles.nuka_cola_machine": "Nuka-Cola Machine"
 }

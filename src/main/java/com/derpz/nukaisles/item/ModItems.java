@@ -19,6 +19,7 @@ public class ModItems {
     public static final Item BOTTLE_CAP = registerItem("bottle_cap", new Item(new FabricItemSettings()));
     public static final Item LIGHTBULB = registerItem("lightbulb", new Item(new FabricItemSettings()));
     public static final Item SCRAP_METAL = registerItem("scrap_metal", new Item(new FabricItemSettings()));
+    public static final Item EMPTY_NUKA_COLA = registerItem("empty_nuka_cola", new Item(new FabricItemSettings()));
 
     //Guns
     public static final Item TEN_MM_PISTOL = registerItem("ten_mm_pistol", new GunItem(new FabricItemSettings(),
@@ -29,6 +30,7 @@ public class ModItems {
 
     //Nuka Cola
     public static final Item NUKA_COLA = registerItem("nuka_cola", new NukaColaItem(new FabricItemSettings()));
+    public static final Item ICE_COLD_NUKA_COLA = registerItem("ice_cold_nuka_cola", new NukaColaItem(new FabricItemSettings()));
 
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
