@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mrm",
+    "cig",
+    "mbs"
+  ],
+  "key":{
+    "m":{
+      "item": "nuka-isles:scrap_metal_block"
+    },
+    "r":{
+      "item": "minecraft:redstone"
+    },
+    "i":{
+      "item": "minecraft:ice"
+    },
+    "c":{
+      "item": "nuka-isles:bottle_cap"
+    },
+    "g":{
+      "item": "minecraft:glass_pane"
+    },
+    "b":{
+      "item": "minecraft:iron_bars"
+    },
+    "s":{
+      "item": "minecraft:chest"
+    }
+  },
+  "result":{
+    "item": "nuka-isles:nuka_cola_machine"
+  }
+}

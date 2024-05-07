@@ -15,7 +15,7 @@ import net.minecraft.world.event.GameEvent;
 
 public class NukaColaItem extends Item {
     public NukaColaItem(Settings settings) {
-        super(settings);
+        super(settings.maxCount(1));
     }
 
     @Override

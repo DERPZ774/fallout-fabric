@@ -25,7 +25,7 @@ public class GunItem extends Item {
 //    private final int fireRate;
 
     public GunItem(Settings settings, SoundEvent shootSound, SoundEvent drySound, float damage, float recoil, int maxAmmo) {
-        super(settings);
+        super(settings.maxCount(1));
         this.shootSound = shootSound;
         this.drySound = drySound;
         this.damage = damage;
@@ -91,10 +91,12 @@ public class GunItem extends Item {
     public void fireGun(World world, PlayerEntity player, ItemStack stack) {
         NbtCompound nbt = stack.getOrCreateNbt();
         int currentAmmo = nbt.getInt("currentAmmo");
-        if (currentAmmo > 0) {
-            nbt.putInt("currentAmmo", --currentAmmo);
-        } else {
-            return;
+        if (!player.getAbilities().creativeMode) {
+            if (currentAmmo > 0) {
+                nbt.putInt("currentAmmo", --currentAmmo);
+            } else {
+                return;
+            }
         }
     }
     public boolean hasAmmo(ItemStack stack) {

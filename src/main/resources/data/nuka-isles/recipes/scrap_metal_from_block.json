@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "nuka-isles:scrap_metal_block"
+        }
+    ],
+    "result": {
+        "item": "nuka-isles:scrap_metal",
+        "count": 9
+    }
+}

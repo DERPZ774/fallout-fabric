@@ -3,6 +3,7 @@ package com.derpz.nukaisles.block;
 import com.derpz.nukaisles.NukaIsles;
 import com.derpz.nukaisles.block.custom.LampBlock;
 import com.derpz.nukaisles.block.custom.NukaColaMachineBlock;
+import com.derpz.nukaisles.block.custom.NukaColaMachineTop;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -29,12 +30,14 @@ public class ModBlocks {
     public static final Block NUKA_COLA_MACHINE = registerBlock("nuka_cola_machine",
             new NukaColaMachineBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
-//    public static final Block NUKA_COLA_MACHINE_TOP = registerBlock("nuka_cola_machine_top",
-//            new NukaColaMachineTop(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+    public static final Block NUKA_COLA_MACHINE_TOP = registerBlock("nuka_cola_machine_top",
+            new NukaColaMachineTop(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque().noBlockBreakParticles()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        registeredBlockItems.add(block.asItem());
+        if (!name.equals("nuka_cola_machine_top")) {
+            registeredBlockItems.add(block.asItem());
+        }
         return Registry.register(Registries.BLOCK, new Identifier(NukaIsles.MOD_ID, name), block);
     }
 

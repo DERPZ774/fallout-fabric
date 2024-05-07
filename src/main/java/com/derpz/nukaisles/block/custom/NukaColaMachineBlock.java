@@ -1,5 +1,6 @@
 package com.derpz.nukaisles.block.custom;
 
+import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.block.entity.ModBlockEntities;
 import com.derpz.nukaisles.block.entity.NukaColaMachineBlockEntity;
 import com.mojang.serialization.MapCodec;
@@ -7,10 +8,13 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
@@ -30,6 +34,7 @@ import static net.minecraft.block.HorizontalFacingBlock.FACING;
 
 public class NukaColaMachineBlock extends BlockWithEntity implements BlockEntityProvider {
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0,0, 16, 32, 16);
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public NukaColaMachineBlock(Settings settings) {
         super(settings);
@@ -56,7 +61,6 @@ public class NukaColaMachineBlock extends BlockWithEntity implements BlockEntity
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return Objects.requireNonNull(super.getPlacementState(ctx)).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-
     }
 
     @Override
@@ -82,7 +86,48 @@ public class NukaColaMachineBlock extends BlockWithEntity implements BlockEntity
             ItemScatterer.spawn(world, pos, (NukaColaMachineBlockEntity)blockEntity);
             world.updateComparators(pos, this);
         }
+
+        BlockPos topPos = pos.up();
+        BlockPos bottomPos = pos.down();
+
+        if (world.getBlockState(topPos).getBlock() instanceof NukaColaMachineTop) {
+            world.breakBlock(topPos, true);
+        }
+        if (world.getBlockState(bottomPos).getBlock() instanceof NukaColaMachineBlock) {
+            world.breakBlock(bottomPos, true);
+        }
+
         return super.onBreak(world, pos, state, player);
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+
+        Direction facing = state.get(FACING);
+
+        // Calculate the position for the top block based on the facing direction
+        BlockPos topPos = pos.up();
+
+        // Place the top block
+        if (world.getBlockState(topPos).isAir()) {
+            BlockState topBlockState = ModBlocks.NUKA_COLA_MACHINE_TOP.getDefaultState().with(FACING, facing);
+            world.setBlockState(topPos, topBlockState, 3);
+
+            // Get the block entity of the bottom block
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof NukaColaMachineBlockEntity bottomBlockEntity) {
+
+                // Set the top block position
+                bottomBlockEntity.setTopBlock(topPos);
+
+                // Create a new block entity instance for the top block and copy data from the bottom block entity
+                BlockEntity topBlockEntity = world.getBlockEntity(topPos);
+                if (topBlockEntity instanceof NukaColaMachineBlockEntity) {
+                    ((NukaColaMachineBlockEntity) topBlockEntity).copyDataFrom(bottomBlockEntity);
+                }
+            }
+        }
     }
 
     @Override

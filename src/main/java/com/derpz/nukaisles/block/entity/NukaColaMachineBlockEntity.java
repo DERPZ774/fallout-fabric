@@ -16,6 +16,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -35,13 +38,14 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements ExtendedS
     private static final int FIRST_OUTPUT_SLOT = 1;
     private static final int LAST_OUTPUT_SLOT = 6;
 
-    protected final PropertyDelegate propertyDelegate;
+    protected PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
     private int fuel = 0;
     private int maxFuel = 3500;
     private int minChill = 20;
     private int extractionTime = 0;
+    private BlockPos topBlockPos;
 
     public NukaColaMachineBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.NUKA_COLA_MACHINE_BLOCK_ENTITY_BLOCK_ENTITY, pos, state);
@@ -100,6 +104,17 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements ExtendedS
         fuel = nbt.getInt("nuka_cola_machine.fuel");
     }
 
+    public ItemStack getRenderStack (int slot) {
+        return this.getStack(slot);
+    }
+
+    @Override
+    public void markDirty() {
+        assert world != null;
+        world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        super.markDirty();
+    }
+
     @Override
     public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
         buf.writeBlockPos(this.pos);
@@ -114,6 +129,29 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements ExtendedS
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new NukaColaMachineScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+    }
+
+    public void setTopBlock(BlockPos topBlockPos) {
+        this.topBlockPos = topBlockPos;
+    }
+
+    public void copyDataFrom(NukaColaMachineBlockEntity bottomBlockEntity) {
+        this.propertyDelegate = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return bottomBlockEntity.propertyDelegate.get(index);
+            }
+
+            @Override
+            public void set(int index, int value) {
+                bottomBlockEntity.propertyDelegate.set(index, value);
+            }
+
+            @Override
+            public int size() {
+                return 5;
+            }
+        };
     }
 
 
@@ -259,5 +297,16 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements ExtendedS
             }
         }
         return false;
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return createNbt();
     }
 }
