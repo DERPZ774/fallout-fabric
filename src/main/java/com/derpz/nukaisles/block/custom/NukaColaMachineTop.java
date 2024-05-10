@@ -31,7 +31,8 @@ public class NukaColaMachineTop extends NukaColaMachineBlock {
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
+        BlockPos  bottomPos = pos.down();
+        BlockEntity blockEntity = world.getBlockEntity(bottomPos);
         if (blockEntity instanceof NukaColaMachineBlockEntity) {
             ItemScatterer.spawn(world, pos, (NukaColaMachineBlockEntity)blockEntity);
             world.updateComparators(pos, this);
@@ -47,6 +48,8 @@ public class NukaColaMachineTop extends NukaColaMachineBlock {
         if (world.getBlockState(bottomPos).getBlock() instanceof NukaColaMachineBlock) {
             return world.getBlockState(bottomPos).getBlock().onUse(world.getBlockState(bottomPos), world, bottomPos, player, hand, hit);
         }
+
+        System.out.println("Broke the block");
 
         return super.onUse(state, world, pos, player, hand, hit);
     }
