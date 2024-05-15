@@ -3,13 +3,19 @@ package com.derpz.nukaisles;
 import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.block.entity.ModBlockEntities;
 import com.derpz.nukaisles.block.entity.renderer.NukaColaMachingBlockEntityRenderer;
+import com.derpz.nukaisles.client.ModModelLayers;
+import com.derpz.nukaisles.client.models.UnderArmorModel;
+import com.derpz.nukaisles.client.renderer.armor.UnderArmorFeatureRenderer;
 import com.derpz.nukaisles.entity.ModEntities;
 import com.derpz.nukaisles.event.KeyInputHandler;
+import com.derpz.nukaisles.item.ModItems;
 import com.derpz.nukaisles.networking.ModMessages;
 import com.derpz.nukaisles.screen.ModScreenHandlers;
 import com.derpz.nukaisles.screen.NukaColaMachineScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
@@ -24,9 +30,9 @@ public class NukaIslesClient implements ClientModInitializer {
         KeyInputHandler.register();
         ModMessages.registerS2CPackets();
         EntityRendererRegistry.register(ModEntities.BULLET_PROJECTILE, EmptyEntityRenderer::new);
-
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.UNDER_ARMOR, UnderArmorModel::getTexturedModelData);
+        ArmorRenderer.register(new UnderArmorFeatureRenderer(), ModItems.VAULT_SUIT);
         HandledScreens.register(ModScreenHandlers.NUKA_COLA_MACHINE_SCREEN_HANDLER, NukaColaMachineScreen::new);
-
         BlockEntityRendererFactories.register(ModBlockEntities.NUKA_COLA_MACHINE_BLOCK_ENTITY_BLOCK_ENTITY, NukaColaMachingBlockEntityRenderer::new);
     }
 }

@@ -3,6 +3,7 @@ package com.derpz.nukaisles.item;
 import com.derpz.nukaisles.NukaIsles;
 import com.derpz.nukaisles.item.custom.GunItem;
 import com.derpz.nukaisles.item.custom.NukaColaItem;
+import com.derpz.nukaisles.item.custom.UnderArmor;
 import com.derpz.nukaisles.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
@@ -31,6 +32,9 @@ public class ModItems {
     //Nuka Cola
     public static final Item NUKA_COLA = registerItem("nuka_cola", new NukaColaItem(new FabricItemSettings()));
     public static final Item ICE_COLD_NUKA_COLA = registerItem("ice_cold_nuka_cola", new NukaColaItem(new FabricItemSettings()));
+
+    //Under Armor
+    public static final Item VAULT_SUIT =  registerItem("vault_suit", new UnderArmor(new FabricItemSettings(), "test"));
 
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {

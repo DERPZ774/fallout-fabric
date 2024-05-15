@@ -49,8 +49,6 @@ public class NukaColaMachineTop extends NukaColaMachineBlock {
             return world.getBlockState(bottomPos).getBlock().onUse(world.getBlockState(bottomPos), world, bottomPos, player, hand, hit);
         }
 
-        System.out.println("Broke the block");
-
         return super.onUse(state, world, pos, player, hand, hit);
     }
 

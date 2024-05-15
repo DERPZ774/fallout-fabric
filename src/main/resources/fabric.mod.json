@@ -5,7 +5,7 @@
 	"name": "Nuka Isles",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"DERPZ774"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -23,6 +23,8 @@
 		],
 		"fabric-datagen": [
 			"com.derpz.nukaisles.NukaIslesDataGenerator"
+		],
+		"jei_mod_plugin": [
 		]
 	},
 	"mixins": [
