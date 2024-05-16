@@ -7,11 +7,10 @@ package com.derpz.nukaisles.client.models;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 
-public class UnderArmorModel<T extends LivingEntity> extends BipedEntityModel<T> {
+public class UnderArmorModel<T extends PlayerEntity> extends BipedEntityModel<T> {
 	public final ModelPart head;
 	public final ModelPart body;
 	public final ModelPart rightArm;
