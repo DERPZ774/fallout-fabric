@@ -1,6 +1,7 @@
 package com.derpz.nukaisles.item;
 
 import com.derpz.nukaisles.NukaIsles;
+import com.derpz.nukaisles.item.custom.BloodPackItem;
 import com.derpz.nukaisles.item.custom.GunItem;
 import com.derpz.nukaisles.item.custom.NukaColaItem;
 import com.derpz.nukaisles.item.custom.UnderArmor;
