@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 public class BloodPackItem extends Item {
     private static final int HEAL_AMOUNT = 24;
 
+
     public BloodPackItem(Settings settings) {
         super(settings);
     }
