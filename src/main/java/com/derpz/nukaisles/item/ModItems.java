@@ -34,7 +34,8 @@ public class ModItems {
     public static final Item ICE_COLD_NUKA_COLA = registerItem("ice_cold_nuka_cola", new NukaColaItem(new FabricItemSettings()));
 
     //Under Armor
-    public static final Item VAULT_SUIT =  registerItem("vault_suit", new UnderArmor(new FabricItemSettings(), "test"));
+    public static final Item VAULT_SUIT =  registerItem("vault_suit", new UnderArmor(new FabricItemSettings(), "vault_111", true));
+    public static final Item TEST_SUIT =  registerItem("test_suit", new UnderArmor(new FabricItemSettings(), "test", true));
 
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {

@@ -6,10 +6,12 @@ import net.minecraft.item.Item;
 
 public class UnderArmor extends Item implements Equipment {
     private final String texture;
+    private final boolean adjustHat;
 
-    public UnderArmor(Settings settings, String texture) {
+    public UnderArmor(Settings settings, String texture, Boolean adjustHat) {
         super(settings);
         this.texture = texture;
+        this.adjustHat = adjustHat;
     }
 
     @Override
@@ -19,5 +21,9 @@ public class UnderArmor extends Item implements Equipment {
 
     public String getTexture() {
         return "textures/models/under_armor/"+texture+".png";
+    }
+
+    public boolean adjustHat() {
+        return adjustHat;
     }
 }

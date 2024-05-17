@@ -29,17 +29,8 @@ public class UnderArmorFeatureRenderer implements ArmorRenderer {
         }
 
         contextModel.copyBipedStateTo(armorModel);
-
-        if (entity.getEquippedStack(EquipmentSlot.CHEST).getItem() instanceof UnderArmor) {
-            contextModel.hat.xScale = 0.55F;
-            contextModel.hat.yScale = 0.55F;
-            contextModel.hat.zScale = 0.55F;
-        }
-
         Identifier texture = new Identifier(NukaIsles.MOD_ID, ((UnderArmor)stack.getItem()).getTexture());
 
         ArmorRenderer.renderPart(matrices, vertexConsumers, light, stack, armorModel, texture);
     }
 }
-
-//First person render mixin, look at PlayerEntityRenderer#renderArm

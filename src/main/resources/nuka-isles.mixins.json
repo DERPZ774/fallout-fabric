@@ -11,6 +11,7 @@
   "client": [
     "client.BipedModelMixin",
     "client.FirstPersonArmMixin",
+    "client.InventoryScreenMixin",
     "client.PlayerModelMixin"
   ]
 }

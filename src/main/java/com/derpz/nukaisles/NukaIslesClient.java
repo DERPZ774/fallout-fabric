@@ -32,6 +32,7 @@ public class NukaIslesClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.BULLET_PROJECTILE, EmptyEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.UNDER_ARMOR, UnderArmorModel::getTexturedModelData);
         ArmorRenderer.register(new UnderArmorFeatureRenderer(), ModItems.VAULT_SUIT);
+        ArmorRenderer.register(new UnderArmorFeatureRenderer(), ModItems.TEST_SUIT);
         HandledScreens.register(ModScreenHandlers.NUKA_COLA_MACHINE_SCREEN_HANDLER, NukaColaMachineScreen::new);
         BlockEntityRendererFactories.register(ModBlockEntities.NUKA_COLA_MACHINE_BLOCK_ENTITY_BLOCK_ENTITY, NukaColaMachingBlockEntityRenderer::new);
     }
