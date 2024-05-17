@@ -1,10 +1,7 @@
 package com.derpz.nukaisles.item;
 
 import com.derpz.nukaisles.NukaIsles;
-import com.derpz.nukaisles.item.custom.BloodPackItem;
-import com.derpz.nukaisles.item.custom.GunItem;
-import com.derpz.nukaisles.item.custom.NukaColaItem;
-import com.derpz.nukaisles.item.custom.UnderArmor;
+import com.derpz.nukaisles.item.custom.*;
 import com.derpz.nukaisles.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
@@ -39,6 +36,7 @@ public class ModItems {
 
     //Misc. Consumables
     public static final Item BLOOD_PACK = registerItem("blood_pack", new BloodPackItem(new FabricItemSettings()));
+    public static final Item STEALTH_BOY = registerItem("stealth_boy", new StealthBoyItem(new FabricItemSettings()));
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
 //        entries.add(BOTTLE_CAP);

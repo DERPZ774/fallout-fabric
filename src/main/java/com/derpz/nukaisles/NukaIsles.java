@@ -2,6 +2,7 @@ package com.derpz.nukaisles;
 
 import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.block.entity.ModBlockEntities;
+import com.derpz.nukaisles.effect.ModEffects;
 import com.derpz.nukaisles.entity.ModEntities;
 import com.derpz.nukaisles.item.ModItemGroups;
 import com.derpz.nukaisles.item.ModItems;
@@ -27,5 +28,6 @@ public class NukaIsles implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 		ModMessages.registerC2SPackets();
 		ModEntities.registerEntities();
+		ModEffects.registerEffects();
 	}
 }

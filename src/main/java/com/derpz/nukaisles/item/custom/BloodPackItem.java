@@ -24,6 +24,7 @@ public class BloodPackItem extends Item {
 
             user.getStackInHand(hand).decrement(1);
 //no clue why it doesn't wait...
+
             user.heal(HEAL_AMOUNT / 10);
             Main.wait(1000);
             user.heal(HEAL_AMOUNT / 10);
