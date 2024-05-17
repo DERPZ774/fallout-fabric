@@ -20,5 +20,6 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.SCRAP_METAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BLOOD_PACK, Models.GENERATED);
     }
 }

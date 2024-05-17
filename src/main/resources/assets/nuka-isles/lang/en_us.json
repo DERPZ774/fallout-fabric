@@ -14,5 +14,6 @@
   "sounds.nuka-isles.lamp_use": "Click",
   "key.category.nuka-isles": "Nuka Isles",
   "key.nuka-isles.shoot": "Shooting",
-  "block.entity.nuka-isles.nuka_cola_machine": "Nuka-Cola Machine"
+  "block.entity.nuka-isles.nuka_cola_machine": "Nuka-Cola Machine",
+  "item.nuka-isles.blood_pack": "Blood Pack"
 }

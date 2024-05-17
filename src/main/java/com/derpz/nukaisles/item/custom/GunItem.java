@@ -14,6 +14,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+//TODO - make it so that the keybind only registers when the player is holding a gun. Otherwise it prevents other uses of the key.
+
 public class GunItem extends Item {
     private final SoundEvent shootSound, drySound;
     private final float damage;
@@ -90,7 +92,7 @@ public class GunItem extends Item {
         NbtCompound nbt = stack.getOrCreateNbt();
         int currentAmmo = nbt.getInt("currentAmmo");
         if (!player.getAbilities().creativeMode) {
-            if (currentAmmo > 0) {
+            if (currentAmmo >= 0) {
                 nbt.putInt("currentAmmo", --currentAmmo);
             } else {
                 return;
@@ -102,5 +104,4 @@ public class GunItem extends Item {
         int currentAmmo = nbt.getInt("currentAmmo");
         return currentAmmo > 0;
     }
-
 }
