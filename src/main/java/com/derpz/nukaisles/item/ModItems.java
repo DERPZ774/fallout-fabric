@@ -1,6 +1,7 @@
 package com.derpz.nukaisles.item;
 
 import com.derpz.nukaisles.NukaIsles;
+import com.derpz.nukaisles.item.custom.BloodPackItem;
 import com.derpz.nukaisles.item.custom.GunItem;
 import com.derpz.nukaisles.item.custom.NukaColaItem;
 import com.derpz.nukaisles.item.custom.UnderArmor;
@@ -34,8 +35,10 @@ public class ModItems {
     public static final Item ICE_COLD_NUKA_COLA = registerItem("ice_cold_nuka_cola", new NukaColaItem(new FabricItemSettings()));
 
     //Under Armor
-    public static final Item VAULT_SUIT =  registerItem("vault_suit", new UnderArmor(new FabricItemSettings(), "test"));
+    public static final Item VAULT_SUIT = registerItem("vault_suit", new UnderArmor(new FabricItemSettings(), "test"));
 
+    //Misc. Consumables
+    public static final Item BLOOD_PACK = registerItem("blood_pack", new BloodPackItem(new FabricItemSettings()));
 
 //    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
 //        entries.add(BOTTLE_CAP);
