@@ -32,8 +32,6 @@ public class BipedModelMixin<T extends LivingEntity> {
             this.hat.xScale = 0.95f;
             this.hat.yScale = 0.95f;
             this.hat.zScale = 0.95f;
-
-
         }
     }
 

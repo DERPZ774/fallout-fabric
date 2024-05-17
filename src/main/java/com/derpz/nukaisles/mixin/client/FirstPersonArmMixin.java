@@ -16,6 +16,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -63,19 +64,17 @@ public abstract class FirstPersonArmMixin {
 
     @Unique
     private void renderModelArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, ModelPart arm, Identifier texture) {
-        // Set the player model pose
         this.setModelPose(player);
 
-        // Set other model parameters
         armorModel.handSwingProgress = 0.0F;
         armorModel.sneaking = false;
         armorModel.leaningPitch = 0.0F;
         armorModel.setAngles(player, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+        armorModel.rightArm.scale(new Vector3f(0.00001f, 0.00001f, 0.00001f));
 
-        // Render the arm with the specified texture
         arm.pitch = 0.0F;
         arm.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityAlpha(texture)), light, OverlayTexture.DEFAULT_UV);
-        RenderLayer skinLayer = RenderLayer.getEntityTranslucent(texture);
+        RenderLayer skinLayer = RenderLayer.getEntityAlpha(texture);
         VertexConsumer skinConsumer = vertexConsumers.getBuffer(skinLayer);
         arm.render(matrices, skinConsumer, light, OverlayTexture.DEFAULT_UV);
     }
